@@ -1,0 +1,108 @@
+/* Make App full screen */
+.App {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #c73f93, #bdc00e);
+  width: 100vw; /* Full width */
+  height: 100vh; /* Full height */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0; /* Remove any default margin */
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+/* Full-screen game area */
+.game-area {
+  position: relative;
+  width: 80vw; /* Scale dynamically with screen width */
+  height: 80vh; /* Scale dynamically with screen height */
+  max-width: 800px; /* Limit max size for larger screens */
+  max-height: 800px;
+  border: 5px solid #fff;
+  margin: 20px auto;
+  overflow: hidden;
+  background: linear-gradient(135deg, #00ffff, #09ee68);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+/* Ball Styling remains the same */
+.ball {
+  position: absolute;
+  width: 4vw; /* Scale dynamically with screen width */
+  height: 4vw;
+  max-width: 30px; /* Limit max size for larger screens */
+  max-height: 30px;
+  background: radial-gradient(circle, #d15f63, #bb9186);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  animation: pulse 1s infinite;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.ball:hover {
+  transform: scale(1.2);
+}
+
+/* Adjust Button Styling */
+button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 10px;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+  .game-area {
+    width: 90vw;
+    height: 90vh;
+  }
+
+  .ball {
+    width: 5vw;
+    height: 5vw;
+  }
+
+  button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+
+.message {
+  font-size: 18px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  animation: fadeOut 1s forwards; /* Optional animation */
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
