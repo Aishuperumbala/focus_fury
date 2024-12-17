@@ -13,7 +13,9 @@ const App: React.FC = () => {
   const [round, setRound] = useState(1);
   const [gameOver, setGameOver] = useState(false);
   const [started, setStarted] = useState(false);
-  const [message, setMessage] = useState<string>(''); // New state to display message
+  const [message, setMessage] = useState<string>(''); // Message state
+  const [name, setName] = useState<string>(() => sessionStorage.getItem('playerName') || ''); // Player name
+  const [nameEntered, setNameEntered] = useState<boolean>(!!sessionStorage.getItem('playerName'));
 
   useEffect(() => {
     if (!started || gameOver) return;
@@ -47,11 +49,13 @@ const App: React.FC = () => {
   const handleBallClick = (id: number) => {
     setBalls((prev) => prev.filter((ball) => ball.id !== id));
     setClickedCount((prev) => prev + 1);
-    setMessage('Ball Clicked!'); // Display message when ball is clicked
+    setMessage('Ball Clicked!');
+    setTimeout(() => setMessage(''), 1000); // Clear message after 1 second
+  };
 
-    setTimeout(() => {
-      setMessage(''); // Clear the message after 1 second
-    }, 1000);
+  const handleNameSubmit = () => {
+    sessionStorage.setItem('playerName', name);
+    setNameEntered(true);
   };
 
   const startGame = () => {
@@ -79,31 +83,48 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <h1>Focus Fury</h1>
-      <h2>Round: {round}</h2>
-      <h2>Score: {clickedCount}</h2>
-      
-      {gameOver ? (
-        <>
-          <h2>Game Over!</h2>
-          <button onClick={startNextRound}>Next Round</button>
-          <button onClick={restartGame}>Restart Game</button>
-        </>
-      ) : !started ? (
-        <button onClick={startGame}>Start Game</button>
+      {!nameEntered ? (
+        <div className="name-entry">
+          <h1>Welcome to Focus Frenzy!</h1>
+          <p>Enter Your Name to Start:</p>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Your Name"
+          />
+          <button onClick={handleNameSubmit} disabled={!name.trim()}>
+            Submit
+          </button>
+        </div>
       ) : (
         <>
-      <div className="game-area">
-        {balls.map((ball) => (
-          <div
-            key={ball.id}
-            className="ball"
-            style={{ top: ball.y, left: ball.x }}
-            onClick={() => handleBallClick(ball.id)}
-          ></div>
-        ))}
-      </div>
-      {message && <div className="message">{message}</div>} {/* Show message here */}</>)}
+          <h1>Focus Frenzy</h1>
+          <h2>Welcome, {name}!</h2>
+          <h2>Round: {round}</h2>
+          <h2>Score: {clickedCount}</h2>
+          {message && <div className="message">{message}</div>}
+          {gameOver ? (
+            <>
+              <h2>Game Over!</h2>
+              <button onClick={startNextRound}>Next Round</button>
+              <button onClick={restartGame}>Restart Game</button>
+            </>
+          ) : !started ? (
+            <button onClick={startGame}>Start Game</button>
+          ) : null}
+          <div className="game-area">
+            {balls.map((ball) => (
+              <div
+                key={ball.id}
+                className="ball"
+                style={{ top: ball.y, left: ball.x }}
+                onClick={() => handleBallClick(ball.id)}
+              ></div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
