@@ -1,0 +1,68 @@
+/* General App Styles */
+.App {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #c73f93, #bdc00e);
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0; /* Remove any default margin */
+    overflow: hidden; /* Prevent scrollbars */
+  }
+  
+  h2 {
+    margin: 0;
+  }
+  
+  /* Status Box Styling */
+  .status-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+    padding: 30px 0 10px 0;
+  }
+  
+  .status-item {
+    font-size: 25px;
+    font-weight: bold;
+    color: fff;
+  }
+  
+
+  
+  /* Game Over Message Styling */
+  .game-over {
+    font-size: 2.0rem;
+    font-weight: bold;
+    color: #2cdf2c;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Button Row */
+  .button-row {
+    display: flex;
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  @media screen and (max-width: 600px) {
+    .game-area {
+      width: 90vw;
+      height: 90vh;
+    }
+  
+    .ball {
+      width: 5vw;
+      height: 5vw;
+    }
+  
+    button {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+    }
+  }
+  

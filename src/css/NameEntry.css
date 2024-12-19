@@ -1,0 +1,49 @@
+.name-entry {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .name-entry h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .name-entry p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .name-entry input {
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .name-entry button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    background-color: #ff7e5f;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .name-entry button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .name-entry button:hover:enabled {
+    background-color: #feb47b;
+  }
+  
+  .name {
+    color: rgb(189, 224, 33);
+  }
