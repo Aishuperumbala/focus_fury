@@ -14,6 +14,10 @@
   overflow: hidden; /* Prevent scrollbars */
 }
 
+h2 {
+  margin: 0;
+}
+
 /* Full-screen game area */
 .game-area {
   position: relative;
@@ -61,7 +65,7 @@ button {
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin: 10px;
+  margin: 20px;
 }
 
 button:hover {
@@ -88,14 +92,29 @@ button:hover {
 }
 
 
+/* Message Styling */
 .message {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 18px;
+  font-weight: bold;
   color: #fff;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 15px;
   border-radius: 10px;
-  margin-top: 20px;
-  animation: fadeOut 1s forwards; /* Optional animation */
+  pointer-events: none; 
+  z-index: 10;
+  animation: fadeOut 2s forwards; 
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes fadeOut {
@@ -154,3 +173,32 @@ button:hover {
   background-color: #feb47b;
 }
 
+.status-box{
+  display : flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+  padding: 30px 0 10px 0;  
+}
+
+.status-item{
+  font-size: 25px;
+  font-weight: bold;
+  color: fff;
+}
+
+.button-row{
+  display: flex;
+}
+
+.name{
+  color: rgb(189, 224, 33);
+}
+
+.game-over{
+  font-size: 2.0rem;
+  font-weight: bold;
+  color: #2cdf2c; 
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  
+}

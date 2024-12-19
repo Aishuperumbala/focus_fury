@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
 
 interface Ball {
   id: number;
@@ -13,9 +13,13 @@ const App: React.FC = () => {
   const [round, setRound] = useState(1);
   const [gameOver, setGameOver] = useState(false);
   const [started, setStarted] = useState(false);
-  const [message, setMessage] = useState<string>(''); // Message state
-  const [name, setName] = useState<string>(() => sessionStorage.getItem('playerName') || ''); // Player name
-  const [nameEntered, setNameEntered] = useState<boolean>(!!sessionStorage.getItem('playerName'));
+  const [message, setMessage] = useState<string>(""); // Message state
+  const [name, setName] = useState<string>(
+    () => sessionStorage.getItem("playerName") || ""
+  ); // Player name
+  const [nameEntered, setNameEntered] = useState<boolean>(
+    !!sessionStorage.getItem("playerName")
+  );
 
   useEffect(() => {
     if (!started || gameOver) return;
@@ -49,12 +53,12 @@ const App: React.FC = () => {
   const handleBallClick = (id: number) => {
     setBalls((prev) => prev.filter((ball) => ball.id !== id));
     setClickedCount((prev) => prev + 1);
-    setMessage('Ball Clicked!');
-    setTimeout(() => setMessage(''), 1000); // Clear message after 1 second
+    setMessage("Ball Clicked!");
+    setTimeout(() => setMessage(""), 1000); // Clear message after 1 second
   };
 
   const handleNameSubmit = () => {
-    sessionStorage.setItem('playerName', name);
+    sessionStorage.setItem("playerName", name);
     setNameEntered(true);
   };
 
@@ -99,16 +103,22 @@ const App: React.FC = () => {
         </div>
       ) : (
         <>
-          <h1>Focus Frenzy</h1>
-          <h2>Welcome, {name}!</h2>
-          <h2>Round: {round}</h2>
-          <h2>Score: {clickedCount}</h2>
+          <h1 >Focus Frenzy</h1>
+          <h2 className="name">Welcome, {name}!</h2>
+          <div className="status-box">
+            <div className="status-item">Round: {round}</div>
+            <div className="status-item">Score: {clickedCount}</div>
+          </div>
           {message && <div className="message">{message}</div>}
           {gameOver ? (
             <>
-              <h2>Game Over!</h2>
+            
+              <div className="button-row">
               <button onClick={startNextRound}>Next Round</button>
               <button onClick={restartGame}>Restart Game</button>
+              </div>
+              <h2 className="game-over">Game Over!</h2>
+             
             </>
           ) : !started ? (
             <button onClick={startGame}>Start Game</button>
